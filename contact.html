@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact - Save Earth</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0; 
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #004d40, #00bfa5, #004d40);
+    position: relative;
+    color: #e0f2f1;
+
+    /* Enable scrolling */
+    overflow-y: auto;
+  }
+
+  /* Particle.js canvas behind everything */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    top: 0; 
+    left: 0;
+    pointer-events: none; /* let clicks through */
+  }
+
+  nav {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    padding: 15px 0;
+    text-align: center;
+    z-index: 10;
+    backdrop-filter: blur(6px);
+  }
+
+  nav a {
+    color: #e0f2f1;
+    margin: 0 18px;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover, nav a.active {
+    color: #ffeb3b;
+  }
+
+  main.contact-container {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    background: rgba(255 255 255 / 0.15);
+    margin: 120px auto 80px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 255, 170, 0.3),
+      inset 0 0 40px rgba(0, 255, 170, 0.15);
+    border: 1px solid rgba(0, 255, 170, 0.3);
+
+    animation: fadeInContent 1.2s ease forwards;
+    opacity: 0;
+  }
+
+  main.contact-container h1 {
+    margin: 0 0 30px;
+    font-weight: 700;
+    font-size: 2.8rem;
+    text-align: center;
+    color: #ffeb3b;
+    text-shadow: 0 0 12px #ffeb3b;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 16px 16px 16px 12px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255 255 255 / 0.3);
+    color: #004d40;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    transition: background 0.3s ease;
+    box-shadow: inset 0 0 8px rgba(0, 255, 170, 0.2);
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus {
+    background: #e0f7fa;
+    box-shadow: 0 0 8px 2px #00bfa5;
+  }
+
+  label {
+    position: absolute;
+    left: 12px;
+    top: 16px;
+    color: #004d40aa;
+    font-weight: 400;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.25s ease;
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label,
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 0.8rem;
+    color: #00bfa5;
+    font-weight: 600;
+  }
+
+  button {
+    background: #ffeb3b;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #004d40;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffeb3b88;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: #fdd835;
+    box-shadow: 0 0 20px #fdd835cc;
+    transform: scale(1.05);
+  }
+
+  .credit {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #b2dfdb;
+
+    animation: fadeInContent 1.2s ease forwards;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+
+  .credit a {
+    color: #ffeb3b;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .map-container {
+    margin-top: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,255,170,0.4);
+    border: 1px solid rgba(0,255,170,0.3);
+
+    animation: fadeInContent 1.2s ease forwards;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+
+  iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    display: block;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 720px) {
+    main.contact-container {
+      margin: 100px 15px 60px;
+      padding: 30px 20px;
+    }
+    nav a {
+      font-size: 1rem;
+      margin: 0 10px;
+    }
+    iframe {
+      height: 250px;
+    }
+  }
+
+  @keyframes fadeInContent {
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Particle.js canvas -->
+  <div id="particles-js"></div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="problem.html">Problems</a>
+    <a href="solution.html">Solutions</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <main class="contact-container" role="main">
+    <h1>Contact Us</h1>
+    <form novalidate>
+      <div class="input-group">
+        <input type="text" id="name" name="name" placeholder=" " required />
+        <label for="name">Your Name</label>
+      </div>
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder=" " required />
+        <label for="email">Your Email</label>
+      </div>
+      <div class="input-group">
+        <textarea id="message" name="message" placeholder=" " required></textarea>
+        <label for="message">Your Message</label>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="credit" aria-label="Contact Info">
+      <p>Created by <strong>Eppepally Karthik Raj</strong></p>
+      <p>Email: <a href="mailto:karthikraj18821@gmail.com">karthikraj18821@gmail.com</a></p>
+      <p>Phone: <a href="tel:+919182498624">+91 91824 98624</a></p>
+    </div>
+
+    <div class="map-container" aria-label="Google Map Location">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6718918837244!2d78.47767267519717!3d17.44127900660709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91b1439316df%3A0x1d16f68c0e1941ae!2sMLR%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1689424524535!5m2!1sen!2sin"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="MLR Institute of Technology Location"
+      ></iframe>
+    </div>
+  </main>
+
+  <!-- Particle.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#00bfa5' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#00bfa5',
+          opacity: 0.25,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+        },
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'grab' },
+          onclick: { enable: true, mode: 'push' },
+          resize: true,
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.5 } },
+          push: { particles_nb: 4 },
+        },
+      },
+      retina_detect: true,
+    });
+  </script>
+
+</body>
+</html>

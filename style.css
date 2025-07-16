@@ -1,0 +1,191 @@
+/* Reset and basic styles */
+marquee{
+    
+    font-size: 20px;
+background: linear-gradient(blue,green,white);
+}
+@keyframes rotateEarth {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #004d40;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+/* Hero Section with Animated Background */
+.hero {
+  height: 100vh;
+  background: url('earth.gif') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 4px #000;
+}
+.hero .overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  padding: 40px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+/* Animation: fade-in */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide-in animation for heading */
+.slide-in {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: slideIn 1.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Optional: subtle background movement */
+@keyframes backgroundMove {
+  0% {
+    background-position: center;
+  }
+  100% {
+    background-position: bottom;
+  }
+}
+/* About page hero with background image and overlay */
+.about-hero {
+  position: relative;
+  min-height: 90vh;
+  background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  color: #f0f0f0;
+  overflow: hidden;
+}
+
+.about-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 77, 64, 0.75);
+  z-index: 1;
+}
+
+.about-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.text-box {
+  flex: 1 1 400px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.image-box {
+  flex: 1 1 400px;
+}
+
+.image-box img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Animations */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeInLeft 1.5s forwards ease-out;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeInRight 1.5s forwards ease-out;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .text-box, .image-box {
+    flex: 1 1 100%;
+  }
+}
